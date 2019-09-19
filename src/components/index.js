@@ -1,0 +1,5 @@
+export  var myheader =()=>import('./header.vue')
+export  var slidle =()=>import('./slidle.vue')
+export  var chartcolumn = ()=>import('./echarts/column.vue')
+export  var chartline = ()=>import('./echarts/line.vue')
+export  var chartpie = ()=>import('./echarts/pie.vue')
