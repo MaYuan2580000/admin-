@@ -1,0 +1,20 @@
+import Vue from 'vue'
+Vue.mixin({
+    methods:{
+        $msg(message,type="info"){
+            this.$message({
+                type,
+                message
+            })
+        },
+        $success(message){
+            this.$msg(message,'success')
+        },
+        $warn(message){
+            this.$msg(message,'warning')
+        },
+        $fail(message){
+            this.$msg(message,'error')
+        }
+    }
+})

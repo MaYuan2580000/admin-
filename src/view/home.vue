@@ -37,7 +37,6 @@
         <el-card class="box-card" style="height:250px">
           <div slot="header" class="clearfix">
             <span>数据统计</span>
-            <el-button style="float: right; padding: 3px 0" type="text">编辑</el-button>
           </div>
 
           <el-row :gutter="40" class="zengJIa">
@@ -51,7 +50,7 @@
             </el-col>
             <el-col :span="12" class="item">
               新增充值 /
-              <span>1500.00</span>元
+              <span>1500.0</span>元
             </el-col>
             <el-col :span="12" class="item">
               新增投诉 /
@@ -61,16 +60,25 @@
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card class="box-card" style="height:360px">
+        <el-card class="box-card" style="height:250px">
           <div slot="header" class="clearfix">
             <span>快捷入口</span>
             <el-button style="float: right; padding: 3px 0" type="text">编辑</el-button>
           </div>
 
-          <el-calendar v-model="tbodate"></el-calendar>
+          <iframe
+            allowtransparency="true"
+            frameborder="0"
+            width="385"
+            height="96"
+            scrolling="no"
+            src="//tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=0&v=0&d=3&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=54511&w=385&h=96&align=center"
+          ></iframe>
         </el-card>
       </el-col>
     </el-row>
+
+    <div style="height:50px"></div>
     <el-row :gutter="20">
       <el-col :span="8">
         <el-card class="box-card">
@@ -106,7 +114,7 @@ import { chartcolumn, chartline, chartpie, qrcode } from "@/components";
 export default {
   data() {
     return {
-      tbodate:new Date()
+      
     };
   },
   components: {
@@ -119,11 +127,10 @@ export default {
 </script>
 
 <style>
-.el-calendar-day{
+.el-calendar-day {
   text-align: center;
   height: 30px !important;
   margin-top: -5px;
-  
 }
 .carStyle button {
   margin: 15px 0;
