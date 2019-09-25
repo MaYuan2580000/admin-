@@ -168,7 +168,7 @@ export default {
          this.loading = false
        }else{
          this.loading = true
-         this.$fail('请想好再输入')
+         this.$fail('请想好再输入了')
        }
        
      })
