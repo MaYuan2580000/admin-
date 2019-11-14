@@ -3,7 +3,12 @@
     <div style="margin:10px 0; display:flex;">
       <el-button type="primary" @click="addUser" icon="el-icon-circle-plus-outline">添加用户</el-button>
 
-      <el-input placeholder="请输入内容" v-model="keywords" class="input-with-select" style="width:500px;margin-left:100px;">
+      <el-input
+        placeholder="请输入内容"
+        v-model="keywords"
+        class="input-with-select"
+        style="width:500px;margin-left:100px;"
+      >
         <el-select v-model="select" slot="prepend" placeholder="请选择">
           <el-option label="餐厅名" value="1"></el-option>
           <el-option label="订单号" value="2"></el-option>
@@ -92,7 +97,13 @@
 
 <script>
 import { clearInterval } from "timers";
-import { getuserList, deleUser, addUser, updateUser,selfindUser} from "../../api/api";
+import {
+  getuserList,
+  deleUser,
+  addUser,
+  updateUser,
+  selfindUser
+} from "../../api/api";
 import qs from "qs";
 export default {
   data() {
@@ -109,13 +120,13 @@ export default {
     };
     return {
       userList: [], //列表数组
-      list:[],
+      list: [],
       loading: true, //加载动画
       dialogVisible: false, //模态框,
       dialogVisibleUsername: false,
       clearValidate: "",
-      select:'',
-      keywords:'',
+      select: "",
+      keywords: "",
       // firstName: "",
       // lastName: "",
       // fullName: ""
@@ -158,20 +169,18 @@ export default {
       };
     },
     //搜索
-    serachData(){
-       this.loading = true
-     var serach = this.keywords;
-     selfindUser(qs.stringify({keyword:serach}))
-     .then(res=>{
-       if (res.data.status == 200) {
-         this.userList = res.data.users
-         this.loading = false
-       }else{
-         this.loading = true
-         this.$fail('请想好再输入了')
-       }
-       
-     })
+    serachData() {
+      this.loading = true;
+      var serach = this.keywords;
+      selfindUser(qs.stringify({ keyword: serach })).then(res => {
+        if (res.data.status == 200) {
+          this.userList = res.data.users;
+          this.loading = false;
+        } else {
+          this.loading = true;
+          this.$fail("请想好再输入了");
+        }
+      });
       //  let that = this;
       //  if(that.keywords === '' || typeof(that.keywords)=="undefined"){
       //       that.list = that.userList
@@ -186,7 +195,7 @@ export default {
       //  }
     },
     //添加
-  
+
     saveUsrInfo(index, row) {
       if (!this.form.name.trim() || !this.form.age || !this.form.msd.trim()) {
         return this.$warn("请输入完整的信息");
@@ -255,8 +264,12 @@ export default {
     getuserInfo() {
       this.loading = true;
       getuserList().then(res => {
-        this.userList = res.data.users;
-        this.loading = false;
+        console.log(res)
+        if (res.data.status === "200") {
+          this.userList = res.data.users;
+          this.loading = false;
+        }
+
         // if (res.data.status != "200") {
         //     this.loading = true;
         // } else {
@@ -281,10 +294,10 @@ export default {
 </script>
 
 <style>
-  .el-select .el-input {
-    width: 130px;
-  }
-  .input-with-select .el-input-group__prepend {
-    background-color: #fff;
-  }
+.el-select .el-input {
+  width: 130px;
+}
+.input-with-select .el-input-group__prepend {
+  background-color: #fff;
+}
 </style>

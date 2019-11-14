@@ -2,12 +2,12 @@ import axios from 'axios'
 axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded';
 const service = axios.create({
     timeout:9000,
-    baseURL:process.env.VUE_APP_BASE_URL
+    // baseURL:process.env.VUE_APP_BASE_URL
 })
 
 service.interceptors.request.use(
     function(config){
-           config.headers['token'] = '123'
+          //  config.headers['token'] = '123'
          return config
     },
     function(error){
